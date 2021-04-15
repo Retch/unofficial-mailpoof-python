@@ -1,6 +1,5 @@
 from time import sleep
 import re
-import sys
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
@@ -14,8 +13,7 @@ class MailpoofBot:
         if not re.match(email, 'mailpoof'):
             email = email + '@mailpoof.com'
         self.driver.get("https://mailpoof.com/mailbox/" + email)
-        sleep(7)
-        print(self.getmails())
+        sleep(10)
 
     def getmails(self):
         mails = self.driver.find_elements_by_class_name('mail-item')
@@ -41,4 +39,7 @@ class MailpoofBot:
         return mailarray
 
 
-MailpoofBot(sys.argv[1])
+def getallmails(email):
+    mp = MailpoofBot(email)
+    mails = mp.getmails()
+    return mails
