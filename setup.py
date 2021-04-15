@@ -11,7 +11,7 @@ setup(
     name='unofficialmailpoof',
     version='0.0.1',
     description='unofficial mailpoof module',
-    long_description=open('README.md').read() + '\n\n' + open('CHANGELOG.txt').read(),
+    long_description=open('README.md').read(),
     url='https://github.com/Retch/unofficial-mailpoof-python',
     author='Retch',
     author_email='retch@mailpoof.com',
