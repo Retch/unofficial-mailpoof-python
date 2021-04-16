@@ -3,6 +3,8 @@
 ## Windows
 Install Chrome and Chromedriver<br>
 <code>choco install chromedriver</code>
+Or if you need a specific version of chromedriver
+<code>choco install chromedriver --version 89.0.4389.230</code>
 
 ## Debian/Ubuntu
 <code>sudo apt install chromium-browser chromium-chromedriver</code>
