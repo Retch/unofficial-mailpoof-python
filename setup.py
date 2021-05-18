@@ -9,7 +9,7 @@ classifiers = [
 
 setup(
     name='unofficialmailpoof',
-    version='0.0.5',
+    version='0.0.6',
     description='unofficial mailpoof module',
     long_description=open('README.md').read(),
     url='https://github.com/Retch/unofficial-mailpoof-python',

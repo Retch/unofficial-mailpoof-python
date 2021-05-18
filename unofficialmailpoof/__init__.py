@@ -15,7 +15,19 @@ class MailpoofBot:
         if not re.match(email, 'mailpoof'):
             email = email + '@mailpoof.com'
         self.driver.get("https://mailpoof.com/mailbox/" + email)
-        sleep(10)
+        sleep(9)
+        try:
+            ad_btn = self.driver.find_element_by_class_name('sc-ifAKCX')
+            ad_btn.click()
+        except:
+            pass
+        try:
+            ad_btn = self.driver.find_element_by_xpath('/html/body/div[1]/div/div/div/div[2]/div/button[2]')
+            ad_btn.click()
+        except:
+            pass
+        
+        sleep(1)
         try:
             cookie_btn = self.driver.find_element_by_class_name('cookie_policy_close')
             cookie_btn.click()
