@@ -5,15 +5,22 @@ from selenium.webdriver.chrome.options import Options
 
 
 class MailpoofBot:
-    def __init__(self, email):
+    def __init__(self, email, noheadless=0):
         chrome_options = Options()
-        chrome_options.add_argument("--headless")
+        if noheadless == 0:
+            chrome_options.add_argument("--headless")
+
         self.driver = webdriver.Chrome(options=chrome_options)
         self.driver.set_window_size(1280, 800)
         if not re.match(email, 'mailpoof'):
             email = email + '@mailpoof.com'
         self.driver.get("https://mailpoof.com/mailbox/" + email)
         sleep(10)
+        try:
+            cookie_btn = self.driver.find_element_by_class_name('cookie_policy_close')
+            cookie_btn.click()
+        except:
+            pass
 
     def getmails(self):
         mails = self.driver.find_elements_by_class_name('mail-item')
@@ -39,7 +46,7 @@ class MailpoofBot:
         return mailarray
 
 
-def getallmails(email):
-    mp = MailpoofBot(email)
+def getallmails(email,noheadless=0):
+    mp = MailpoofBot(email, noheadless)
     mails = mp.getmails()
     return mails

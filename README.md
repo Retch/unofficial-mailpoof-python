@@ -2,7 +2,7 @@
 
 ## Windows
 Install Chrome and Chromedriver<br>
-<code>choco install chromedriver</code>
+<code>choco install chromedriver</code><br>
 Or if you need a specific version of chromedriver
 <code>choco install chromedriver --version 89.0.4389.230</code>
 
@@ -22,8 +22,11 @@ Calling the module might take a minimum of 10 seconds
 <code>import unofficialmailpoof as mp</code>
 
 ### Use it
-<code>print(mp.getallmails('john.doe@mailpoof.com'))
-print(mp.getallmails('john.doe'))</code>
+<code>print(mp.getallmails('john.doe@mailpoof.com'))<br>
+print(mp.getallmails('john.doe'))</code><br>
+If you want to see what the bot is doing, add argument 1 or True to getallmails like this:<br>
+<code>print(mp.getallmails('john.doe@mailpoof.com',1))<code><br>
+<code>print(mp.getallmails('john.doe@mailpoof.com',True))<code>
 
 # Result
 The output should look like this
