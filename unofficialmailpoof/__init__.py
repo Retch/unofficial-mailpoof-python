@@ -16,17 +16,12 @@ class MailpoofBot:
             email = email + '@mailpoof.com'
         self.driver.get("https://mailpoof.com/mailbox/" + email)
         sleep(9)
+        # Now try to click on consent ads
         try:
-            ad_btn = self.driver.find_element_by_class_name('sc-ifAKCX')
+            ad_btn = self.driver.find_element_by_class_name('ljEJIv')
             ad_btn.click()
         except:
-            pass
-        try:
-            ad_btn = self.driver.find_element_by_xpath('/html/body/div[1]/div/div/div/div[2]/div/button[2]')
-            ad_btn.click()
-        except:
-            pass
-        
+            pass        
         sleep(1)
         try:
             cookie_btn = self.driver.find_element_by_class_name('cookie_policy_close')
