@@ -9,7 +9,7 @@ classifiers = [
 
 setup(
     name='unofficialmailpoof',
-    version='0.0.7',
+    version='0.0.8',
     description='unofficial mailpoof module',
     long_description=open('README.md').read(),
     url='https://github.com/Retch/unofficial-mailpoof-python',
@@ -19,5 +19,5 @@ setup(
     classifiers=classifiers,
     keywords='mailpoof',
     packages=find_packages(),
-    install_requires=['selenium>=3.141.0', 'urllib3>=1.26.4']
+    install_requires=['selenium>=3.141.0', 'urllib3>=1.25.9']
 )
