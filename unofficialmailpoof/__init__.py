@@ -1,5 +1,6 @@
 from time import sleep
 import re
+import os
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
@@ -9,13 +10,17 @@ class MailpoofBot:
         chrome_options = Options()
         if noheadless == 0:
             chrome_options.add_argument("--headless")
-
+        chrome_options.add_argument('log-level=3')
+        if (os.path.isdir(os.path.join(os.getcwd(), 'unofficialmailpoof', 'uBlock0.chromium'))):
+            chrome_options.add_argument('load-extension=' + os.path.join(os.getcwd(), 'unofficialmailpoof', 'uBlock0.chromium'))
+        if (os.path.isdir(os.path.join(os.getcwd(), 'uBlock0.chromium'))):
+            chrome_options.add_argument('load-extension=' + os.path.join(os.getcwd(), 'uBlock0.chromium'))
         self.driver = webdriver.Chrome(options=chrome_options)
         self.driver.set_window_size(1280, 800)
         if not re.match(email, 'mailpoof'):
             email = email + '@mailpoof.com'
         self.driver.get("https://mailpoof.com/mailbox/" + email)
-        sleep(9)
+        sleep(5)
         # Now try to click on consent ads
         try:
             ad_btn = self.driver.find_element_by_class_name('ljEJIv')
@@ -55,5 +60,25 @@ class MailpoofBot:
 
 def getallmails(email,noheadless=0):
     mp = MailpoofBot(email, noheadless)
+    # First try to fetch mails
     mails = mp.getmails()
+    # If no mails are found, the following code will start until mails are fetched before the deadline
+    if (mails == []):
+        sleep(5)
+        mails = mp.getmails()
+    if (mails == []):
+        sleep(10)
+        mails = mp.getmails()
+    if (mails == []):
+        sleep(15)
+        mails = mp.getmails()
+    if (mails == []):
+        sleep(20)
+        mails = mp.getmails()
+    if (mails == []):
+        sleep(25)
+        mails = mp.getmails()
+    if (mails == []):
+        sleep(30)
+        mails = mp.getmails()
     return mails
